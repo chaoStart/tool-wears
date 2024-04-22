@@ -10,7 +10,7 @@ from Model import CNN_1D
 from Model import CBAM
 import matplotlib.pyplot as plt
 plt.rcParams['font.sans-serif'] = 'SimHei'
-//据说GitHub没法传大于50MB的数据
+#据说GitHub没法传大于50MB的数据
 batch_size=10
 epoch =5
 lr = 0.001
