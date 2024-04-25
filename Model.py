@@ -97,11 +97,8 @@ class CBAM(nn.Module):
 
     def forward(self, x):
         print('CBAM输入的x是:', x.shape)
-        residual = x
         out=self.cnn_1d(x)
-        residual=residual.unsqueeze(0)# 增加一个维度
         out=out.unsqueeze(0)# 增加一个维度
-        print('Residual增加一个维度的Residual是:', residual.shape)
         print('cnn1D输出的out是:', out.shape)
         print('out[1]是多少:',out.size(1))
         out1 = self.channel_attention(out)
@@ -110,6 +107,9 @@ class CBAM(nn.Module):
         print('out1*out乘积的输出:',out.shape)
         # out = self.channel_attention(out) * out
         out = self.spatial_attention(out) * out
+        residual = x
+        residual = residual.unsqueeze(0)  # 增加一个维度
+        print('Residual增加一个维度的Residual是:', residual.shape)
         out = residual + out
         print('res+channel+spatial=out的输出:',out.size())
         out=torch.squeeze(out, dim=0)
