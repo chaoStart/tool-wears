@@ -99,14 +99,16 @@ class CBAM(nn.Module):
         print('CBAM输入的x是:', x.shape)
         out=self.cnn_1d(x)
         out=out.unsqueeze(0)# 增加一个维度
-        print('cnn1D输出的out是:', out.shape)
-        print('out[1]是多少:',out.size(1))
+        print('cnn1D增加一个维度的输出out是:', out.shape)
+        print('cnn1D增加一个维度的输出out.size(1)是:',out.size(1))
         out1 = self.channel_attention(out)
         print('channel_attention输出的out1是:', out1.shape)
         out = out1 * out
         print('out1*out乘积的输出:',out.shape)
         # out = self.channel_attention(out) * out
         out = self.spatial_attention(out) * out
+        print('spatial_attention(out)和channel_attention乘积的输出:',out.shape)
+
         residual = x
         residual = residual.unsqueeze(0)  # 增加一个维度
         print('Residual增加一个维度的Residual是:', residual.shape)

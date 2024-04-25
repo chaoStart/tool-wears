@@ -73,7 +73,7 @@ for i in range(epoch):
     loss_train = 0
     for train_x, train_y in train_loader:
         print('-------------------------------')
-        print("train_y和train_x的",type(train_y),type(train_x))
+        print("train_y和train_x的类型",type(train_y),type(train_x))
         print("train_y和train_x的形状",train_y.shape,train_x.shape)
         model.train()
         optimizer.zero_grad()
