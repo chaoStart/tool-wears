@@ -77,7 +77,7 @@ class SpatialAttentionModule(nn.Module):
         print('ssigmoid',out.size())
         return out
 
-# CBAM模块
+# CBAM模块由上述CAM和SAM模块两个组合而成
 class CBAM(nn.Module):
     # def __init__(self, in_channel=256, out_channels=64):
     def __init__(self,in_channel=7, out_channels=7):
